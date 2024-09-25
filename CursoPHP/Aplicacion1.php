@@ -13,7 +13,7 @@
 
     <?php
         if (isset($_GET['pagina']) && $_GET['pagina'] == 1){
-            echo "Estás en la página 1.";
+            echo "Esta es la página home";
         }elseif (isset($_GET['pagina']) && $_GET['pagina'] == 2){
             echo "Estás en la página 2.";
         } elseif (isset($_GET['pagina']) && $_GET['pagina'] == 3){

@@ -1,0 +1,44 @@
+PHP
+foreach ($item as $key => $val){
+	echo $key . ":" . $val . "<br>";
+}
+
+Conseguir un login útil, cuando el usuario introduzca admin admin diga ok, el usuario y contraseña lo introducimos en una variable fija.
+El formulario tiene que funcionar por get
+
+SESIONES
+se accede mediante:
+$_SESSION ['user']="luke";
+
+en la primera linea antes de declarar HTML:
+<?php
+session_start();
+if isset
+?>
+
+
+las cookies están activas hasta que se muere la sesión 
+unset($_COOKIE['user_agent']);
+
+
+session_destroy(); 
+
+$_SESSION['login']= false;
+
+-------------------------------------------------------------------------------------------------------------
+Dia 2
+ // Para acceder a bases de datos.
+
+<?php
+	$db=new mysqli("localhost", "root", "", "prueba");
+?>
+
+//query
+$q="SELECT*FROM users";
+
+$result = $db -> query($q)
+// $row es el resultado de la variable que se está trabajando
+// fetch_assoc coge uno de los elementos y trae todo el contenido de la tabla como un array asociativo.
+if($row=$result -> fetch_assoc()){
+	echo $row['id'];
+}

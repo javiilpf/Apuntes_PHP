@@ -23,12 +23,6 @@
             }else{
                 echo "eres un mierda";
             }
-
-            
-        
-    
-        
-        
     ?>
 </body>
 </html>
