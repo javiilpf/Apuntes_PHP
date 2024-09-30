@@ -28,7 +28,8 @@ if (isset($_POST['uno'])) {
     <title>Sumar</title>
 </head>
 <body>
-    <form method="post" action="sumar.php">
+    <form method="post" action="sumar.php">´
+        <input type="text" id="numero" name="numero">
         <input type="submit" id="uno" name="uno" value="+2" />
         <input type="submit" id="dos" name="dos" value="-2" />
         <input type="submit" id="mult" name="mult" value="x2" />
