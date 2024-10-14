@@ -1,0 +1,48 @@
+header {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    background-color: #FFFFFF;
+    padding: 20px;
+    
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.articulo {
+    display: flex;
+    flex-direction: row; /* Dispone los elementos en row */
+    align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
+    margin-bottom: 20px; /* Espacio debajo de cada artículo */
+    padding: 57px; /* Espacio interno para cada artículo */
+    border-bottom: 1px solid #ccc; /* Línea separadora entre artículos */
+    background-color: #aba3abb6;
+
+}
+
+.articulo img {
+    margin-right: 30px; /* Espacio debajo de la imagen */
+}
+
+.articulo p {
+    text-align: left; /* Alinea el texto a la izquierda */
+
+}
+
+main {
+    margin-top: 250px; /* Ajusta este valor según la altura de tu header */
+    margin-bottom: 250px;
+    
+}
+
+footer{
+    background-color: #c4b0c6;
+    padding: 10px;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+}

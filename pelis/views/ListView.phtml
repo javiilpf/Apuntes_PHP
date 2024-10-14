@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mi lista de peliculas</title>
+</head>
+<body>
+<h1>Mi lista de peliculas</h1>
+
+<form action="index.php" method="post">
+	<input type="text" name="busca" placeholder="Titulo para la búsqueda">
+	<input type="submit" value="Busca">
+</form>
+
+<ul>
+<?php
+	echo'<form action="index.php" method="post">
+		<input type ="text" name="title" placeholder="Título">
+		<input type="number" name = "year" placeholder="year">
+		<input type="text" name="poster" placeholder="poster">
+		<input type="submit" name="add" value="Agregar"></form>
+		<br></br><br></br>';
+	
+
+	foreach ($movies as $movie) {
+		echo '<li>'.$movie->getTitle().' (Estrenado en '.$movie->getYear().')';
+		echo '<form action="index.php" method="post">
+			<input type="hidden" name="id" value="'.$movie->getId().'">
+			<input type="submit" name="borrar" value="borrar">
+			</form>';
+}
+
+
+?>
+</ul>
+</body>
+</html>
