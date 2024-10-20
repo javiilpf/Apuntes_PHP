@@ -9,7 +9,7 @@ class PeliRepository
 	public static function getMovies(){
 		$db=Conectar::conexion();
 		$movies= array();
-		$result= $db->query("SELECT * FROM pelis");
+		$result= $db->query("SELECT * FROM películas");
 		while($row=$result->fetch_assoc()){
 				$movies[]=new PeliModel($row);
 			}
@@ -19,27 +19,25 @@ class PeliRepository
 	public static function getMovieByTitle($t){
 		$db=Conectar::conexion();
 		$movies= array();
-		$result= $db->query("SELECT * FROM pelis WHERE Título LIKE '%".$t."%'");
+		$result= $db->query("SELECT * FROM películas WHERE title LIKE '%".$t."%'");
 		while($row=$result->fetch_assoc()){
 				$movies[]=new PeliModel($row);
 			}
 		return $movies;
 	}
 
-public static function like($likes){
-	$db=Conectar::conexion();
-    $db->query("UPDATE pelis SET likes='$likes' WHERE id='".$_POST['id']."'");
+	public static function deleteMovies($id){
+		$db=Conectar::conexion();
+        $db->query("DELETE FROM películas WHERE id= $id");
+	}
+
+	public static function addMovie($title, $year, $image, $likes){
+        $db=Conectar::conexion();
+        $db->query("INSERT INTO películas VALUES (null,'$title', $year, '$image',$likes)");
+    }
+
+	
 }
 
-public static function borrarPelis($id){
-	$db=Conectar::conexion();
-    $db->query("DELETE FROM pelis WHERE id='$id'");
-}
 
-public static function añadirPelis($title, $year, $image, $likes){
-	$db=Conectar::conexion();
-    $db->query("INSERT INTO pelis VALUES (NULL, '$title', '$year', '$image', '$likes')");
-
-}
-}
 ?>

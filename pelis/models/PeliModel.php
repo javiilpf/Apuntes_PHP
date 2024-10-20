@@ -9,17 +9,13 @@ class PeliModel
 	private $title;
 	private $year;
 	private $image;
-	private $like;
-	
 	
 	function __construct($datos)
 	{
 		$this->id=$datos['id'];
-		$this->title=$datos['Título'];
-		$this->year=$datos['Año'];
-		$this->image=$datos['Póster'];
-		$this->like=$datos['Likes'];
-		
+		$this->title=$datos['title'];
+		$this->year=$datos['year'];
+		$this->image=$datos['poster'];
 		# code...
 	}
 
@@ -34,9 +30,6 @@ class PeliModel
 	}
 	public function getImage(){
 		return $this->image;
-	}
-	public function getLike(){
-		return $this->like;
 	}
 }
 
