@@ -31,9 +31,10 @@ class PeliRepository
         $db->query("DELETE FROM películas WHERE id= $id");
 	}
 
-	public static function addMovie($title, $year, $image, $likes){
+	public static function addMovie($title, $year, $image){
         $db=Conectar::conexion();
-        $db->query("INSERT INTO películas VALUES (null,'$title', $year, '$image',$likes)");
+        $db->query("INSERT INTO películas VALUES (null,'$title', $year, '$image')");
+		
     }
 
 	

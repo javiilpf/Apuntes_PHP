@@ -24,10 +24,13 @@
 
 foreach ($movies as $movie) {
 	echo '<li>'.$movie->getTitle().' (Estrenado en '.$movie->getYear().')</li>';
-	echo '<form action="index.php" method="post">
+	echo '<form action="index.php method="post">
 	<input type="hidden" name= "id" value= "'.$movie->getId().'">
 	<input type="submit" name="borrar" value="borrar">
-	</form><br/>';
+	</form>';
+	echo '<form action="index.php?p='.$movie->getTitle().'" method="post">
+	<input type="submit" name="Favorita" value="❤️">
+	</form>';
 }
 
 echo '<form action="index.php" method="post">

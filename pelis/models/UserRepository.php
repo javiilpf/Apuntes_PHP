@@ -10,10 +10,18 @@ class UserRepository
             if ($row = $result->fetch_assoc()) {
                 if ($row['password'] == $password) {
                     $_SESSION['login'] = true;
+                    $_SESSION['user'] =new UserModel($row['id'], $username, $password);
                 } 
             } 
     }
+
+    public static function setFavorites($user_id, $film_name){
+        $db= Conectar::conexion();
+        $db->query("INSERT INTO favoritos VALUES (NULL, '".$user_id."', '".$film_name."')");
+    }
 }
+
+
     // public static function getUsers(){
     //     $db=Conectar::conexion();
     //     $users= array();

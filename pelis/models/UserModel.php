@@ -9,10 +9,10 @@ class UserModel
     private $password;
 
 
-    function __construct($datos){
-        $this->id=$datos['id'];
-        $this->username=$datos['username'];
-        $this->password=$datos['password'];
+    function __construct($id, $username, $password){
+        $this->id=$id;
+        $this->username= $username;
+        $this->password=$password;
     }
 
     public function getId(){
