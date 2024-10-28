@@ -11,6 +11,10 @@ if(isset($_GET['c'])){
     require_once('controllers/' . $_GET['c'] . 'Controller.php'); // controllers/ user
 }
 
+if(isset($_GET['i'])){
+    require_once ("views/userInfo.phtml");
+}
+
 if(isset($_POST['borrar'])){
     PeliRepository::deleteMovies($_POST['id']);
 }

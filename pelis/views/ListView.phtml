@@ -11,7 +11,10 @@
 
 	echo '<form action="index.php" method="post">
 		<input type= "submit" name="logout" value="Cerrar sesion" />
-	</form>'
+	</form>';
+
+	echo '<form action="index.php?i='.$_SESSION['user']->getUsername().'" method="post">
+	<input type="submit" name="info" value="Informacion usuario" /><br>';
 ?>
 
 <form action="index.php" method="post">
