@@ -10,5 +10,15 @@
 		<input type= "submit" name="agregar" value="Agregar producto" />
 	</form>';
 	}
+
 	
+	foreach ($products as $product){
+		echo '<li>'.$product->getName().'</li>'.
+			'<form action="index.php?b=carrito" method="post">
+				<input type="hidden" name="id" value="'.$product->getId().'"/>
+				<input type="hidden" name="precio" value="'.$product->getPrice().'"/>
+				<input type="submit" name="carrito" value="Añadir al carrito"/>
+			</form>
+		';
+	}
 ?>

@@ -14,6 +14,23 @@ class UserRepository
                 } 
             } 
     }
+
+    public static function createUser($username, $password){
+        
+        $db = Conectar::conexion();
+        $q=("INSERT INTO users VALUES (NULL, '".$username."', '".$password."', 1)");
+        $db->query($q);
+        $q2=("SELECT * FROM users WHERE user = '".$username."'");
+        $result = $db->query($q2);
+        if ($row = $result->fetch_assoc()) {
+            
+                $_SESSION['login'] = true;
+                $_SESSION['user'] =new UserModel($row['id'], $username, $password, $row['rol']);
+            
+        } 
+    }
+
+    // ESTO ESTARÍA BIEN MANDARLO A UN PRODUCT REPOSITORY
     public static function addProduct($name, $description, $image, $price, $stock){
         
         $db = Conectar::conexion();

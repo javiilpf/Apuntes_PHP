@@ -2,13 +2,15 @@
 
 class ProductModel{
 
+    private $id;
     private $name;
     private $description;
     private $image;
     private $price;
     private $stock;
 
-    function __construct($name, $description, $image, $price, $stock){
+    function __construct($id, $name, $description, $image, $price, $stock){
+        $this->id=$id;
         $this->name= $name;
         $this->description= $description;
         $this->image= $image;
@@ -16,6 +18,9 @@ class ProductModel{
         $this->stock= $stock;
     }
 
+    public function getId(){
+        return $this->id;
+    }
     public function getName(){
         return $this->name;
     }

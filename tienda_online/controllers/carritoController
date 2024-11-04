@@ -1,0 +1,15 @@
+<?php
+    
+    require_once("models/CarritoRepository.php");
+    require_once("models/CarritoModel.php");
+    require_once("models/OrderModel.php");
+    require_once("models/OrderRepository.php");
+    
+    
+    if(isset($_POST["carrito"])){
+        $order=OrderRepository::getOrderByUserId($_SESSION['user']->getId());
+        CarritoRepository::addCarrito($_POST['id'],  $order->getId(), $_POST['precio'], 1);
+    };
+    
+
+?>
