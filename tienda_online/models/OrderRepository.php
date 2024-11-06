@@ -10,13 +10,19 @@ require_once ("models/OrderModel.php");
 
         public static function getOrderByUserId($id_user){
             $db=Conectar::conexion();
-            $q=("SELECT * FROM `order` WHERE id_user = '".$id_user."' && state='0'");
+            $q=("SELECT * FROM `order` WHERE id_user = '".$id_user."' AND state='0'");
             $result= $db->query($q);
             if ($row=$result->fetch_assoc()){
                 return new OrderModel($row['id'], $row['id_user'], $row['date'], $row['total'], $row['state']);
             }else{
                 return false;
             }
+        }
+
+        public static function updateOrderState($id_order, $state){
+            $db=Conectar::conexion();
+            
+            $db->query("UPDATE `order` SET state = '".$state."' WHERE id = '".$id_order."'");
         }
     }
 ?>

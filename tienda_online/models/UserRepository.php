@@ -30,12 +30,20 @@ class UserRepository
         } 
     }
 
+    public static function setUserAdmin($username){
+        
+        $db = Conectar::conexion();
+        $db->query("UPDATE users SET rol = 2 WHERE user = '".$username."'");
+    }
+
     // ESTO ESTARÍA BIEN MANDARLO A UN PRODUCT REPOSITORY
     public static function addProduct($name, $description, $image, $price, $stock){
         
         $db = Conectar::conexion();
         $db->query("INSERT INTO products VALUES (NULL, '".$name."', '".$description."', '".$image."', ".$price.", ".$stock.")");
     }
+
+    
 }
 
 

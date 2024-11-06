@@ -9,18 +9,27 @@
     <h1>Carrito de Compras</h1>
     
     <?php
-        foreach ($productCarrito as $product){
+        foreach($productsCarrito as $product){
             echo '<li>'.$product->getName().'</li>'.
-			'<form action="index.php?v=carritoView" method="post">
+			'<form action="index.php?v=carritoFunc" method="post">
 				<input type="hidden" name="id" value="'.$product->getId().'"/>
 				<input type="hidden" name="precio" value="'.$product->getPrice().'"/>
-				<input type="submit" name="carrito" value="Añadir al carrito"/>
+				<input type="submit" name="eliminar" value="eliminar del carrito">
 			</form>
 		';
         }
+        echo '<br></br><br></br>
+            <form action="index.php" method="post">
+                <input type="submit" name="list" value="Volver a inicio"/>
+            </form>
+        ';
 
 
-        ///// EL CARRITO VIEW NO ESTÁ TERMINADO
+        echo '<form action="index.php?v=carritoFunc" method="post">
+                <input type="submit" name="comprar" value="Realizar pedido"/>
+            </form>
+        ';
+   
         
     ?>
     

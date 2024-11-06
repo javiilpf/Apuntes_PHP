@@ -20,6 +20,13 @@
         exit();
     }
 
+    
+    if(isset($_POST['makeAdmin'])){
+        
+        
+        UserRepository::setUserAdmin($_POST['username']);
+        
+    }
 ?>
 
 <!-- Mostrar los productos -->

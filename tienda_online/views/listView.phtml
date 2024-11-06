@@ -9,6 +9,11 @@
 		echo '<form action="index.php?a=add" method="post">
 		<input type= "submit" name="agregar" value="Agregar producto" />
 	</form>';
+
+		echo '<form action="index.php?a=modify" method="post">
+		<input type= "submit" name="modificar" value="Modificar usuario" />
+		</form>
+		';
 	}
 
 	
@@ -17,8 +22,13 @@
 			'<form action="index.php?b=carrito" method="post">
 				<input type="hidden" name="id" value="'.$product->getId().'"/>
 				<input type="hidden" name="precio" value="'.$product->getPrice().'"/>
-				<input type="submit" name="carrito" value="Añadir al carrito"/>
+				<input type="submit" name="addCarrito" value="Añadir al carrito"/>
 			</form>
 		';
+
+		
 	}
+	echo '<form action="index.php" method="post">
+                <input type="submit" name="carrito" value="Ver carrito"/>
+            </form>';
 ?>
