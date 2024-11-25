@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Crear Producto</title>
+    <link rel="stylesheet" href="/tienda_online/styles/productFormStyle.css">
 </head>
 <body>
-    
+    <form action="index.php?c=user" method="post" class="product-form">
+        <input type="text" name="name" placeholder="NOMBRE DEL PRODUCTO" class="input-field">
+        <input type="text" name="description" placeholder="DESCRIPCIÓN DEL PRODUCTO" class="input-field">
+        <input type="text" name="image" placeholder="imagen del producto" class="input-field">
+        <input type="number" name="price" placeholder="PRECIO DEL PRODUCTO EN €" class="input-field">
+        <input type="number" name="stock" placeholder="CANTIDAD" class="input-field">
 
-    <form action="index.php?c=user" method="post" >
-        <input type="text" name="name" placeholder="NOMBRE DEL PRODUCTO">
-        <input type="text" name="description" placeholder="DESCRIPCIÓN DEL PRODUCTO">
-        <input type="text" name="image" placeholder="imagen del producto">
-        <input type="number" name="price" placeholder="PRECIO DEL PRODUCTO EN €">
-        <input type="number" name="stock" placeholder="CANTIDAD">
-
-        <input type="submit" name="create" value="CREAR PRODUCTO">
+        <input type="submit" name="create" value="CREAR PRODUCTO" class="btn">
     </form>
-
-
 </body>
 </html>

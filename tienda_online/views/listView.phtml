@@ -1,34 +1,33 @@
 <?php
-	echo 'Bienvenido';
+	echo '<link rel="stylesheet" href="/tienda_online/styles/listView.css">';
+    echo '<h1><strong>¡Bienvenido! ' . $_SESSION['user']->getUsername() . '</strong></h1>';
 
-	echo '<form action="index.php" method="post">
-		<input type= "submit" name="logout" value="Cerrar sesion" />
-	</form>';
+    echo '<form action="index.php" method="post" class="form">
+        <input type="submit" name="logout" value="Cerrar sesión" class="btn" />
+    </form>';
 
-	if ($_SESSION['user']->getRol()==2){
-		echo '<form action="index.php?a=add" method="post">
-		<input type= "submit" name="agregar" value="Agregar producto" />
-	</form>';
+    if ($_SESSION['user']->getRol() == 2) {
+        echo '<form action="index.php?a=add" method="post" class="form">
+            <input type="submit" name="agregar" value="Agregar producto" class="btn" />
+        </form>';
 
-		echo '<form action="index.php?a=modify" method="post">
-		<input type= "submit" name="modificar" value="Modificar usuario" />
-		</form>
-		';
-	}
+        echo '<form action="index.php?a=modify" method="post" class="form">
+            <input type="submit" name="modificar" value="Modificar usuario" class="btn" />
+        </form>';
+    }
 
-	
-	foreach ($products as $product){
-		echo '<li>'.$product->getName().'</li>'.
-			'<form action="index.php?b=carrito" method="post">
-				<input type="hidden" name="id" value="'.$product->getId().'"/>
-				<input type="hidden" name="precio" value="'.$product->getPrice().'"/>
-				<input type="submit" name="addCarrito" value="Añadir al carrito"/>
-			</form>
-		';
+    echo '<ul class="product-list">';
+    foreach ($products as $product) {
+        echo '<li class="product-item">' . $product->getName() . 
+            '<form action="index.php?b=carrito" method="post" class="form-inline">
+                <input type="hidden" name="id" value="' . $product->getId() . '"/>
+                <input type="hidden" name="precio" value="' . $product->getPrice() . '"/>
+                <input type="submit" name="addCarrito" value="Añadir al carrito" class="btn-inline"/>
+            </form></li>';
+    }
+    echo '</ul>';
 
-		
-	}
-	echo '<form action="index.php" method="post">
-                <input type="submit" name="carrito" value="Ver carrito"/>
-            </form>';
+    echo '<form action="index.php" method="post" class="form">
+        <input type="submit" name="carrito" value="Ver carrito" class="btn" />
+    </form>';
 ?>

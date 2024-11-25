@@ -1,0 +1,54 @@
+/* Estilo general del cuerpo */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    padding: 20px;
+}
+
+/* Formularios */
+.form {
+    margin: 10px 0;
+}
+
+.form-inline {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* Botones */
+.btn, .btn-inline {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+.btn:hover, .btn-inline:hover {
+    background-color: #0056b3;
+}
+
+.btn-inline {
+    padding: 5px 10px;
+}
+
+/* Lista de productos */
+.product-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.product-item {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Formulario de Login</title>
+    <link rel="stylesheet" href="/tienda_online/styles/loginStyle.css">
 </head>
 <body>
+    <form action="index.php?c=user" method="post">
+        <input type="text" name="user" placeholder="Usuario" class="input-field">
+        <input type="password" name="password" placeholder="Contraseña" class="input-field">
+        <input type="submit" name="login" value="Login" class="btn">
     
-
-    <form action="index.php?c=user" method="post" >
-        <input type="text" name="user" placeholder="Usuario">
-        <input type="password" name="password" placeholder="contraseña">
-        <input type="submit" name="login" value="Login">
-    
-        <p>¿Todavía no estas registrado?</p>
-        <input type="submit" name="registro" value="Regístrate aquí">
+        <p>¿Todavía no estás registrado?</p>
+        <input type="submit" name="registro" value="Regístrate aquí" class="btn secondary">
     </form>
-
 </body>
 </html>

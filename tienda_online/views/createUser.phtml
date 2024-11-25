@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear usuario</title>
+    <link rel="stylesheet" href="/tienda_online/styles/createUserStyle.css">
 </head>
 <body>
-    <form method="post" action="index.php?c=user">
-        <input type="text" name="username" placeholder="Nombre del usuario">
-        <input type="password" name="password" placeholder="Contraseña">
-        <input type="submit" name="newUser" value="Crear Usuario">
+    <form method="post" action="index.php?c=user" class="create-user-form">
+        <input type="text" name="username" placeholder="Nombre del usuario" class="input-field">
+        <input type="password" name="password" placeholder="Contraseña" class="input-field">
+        <input type="submit" name="newUser" value="Crear Usuario" class="btn">
     </form>
 </body>
 </html>

@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificación usuarios</title>
+    <link rel="stylesheet" href="/tienda_online/styles/userModificationStyle.css">
 </head>
 <body>
-    <h1> Página para hacer usuarios administradores </h1>
+    <h1>Página para hacer usuarios administradores</h1>
     
-    <form action="index.php?y=modificar" method="post" >
-        <input type="text" name="username" placeholder="Nombre de Usuario">
-        <input type="submit" name="makeAdmin" value="Hacer Administrador">
+    <form action="index.php?y=modificar" method="post" class="user-mod-form">
+        <input type="text" name="username" placeholder="Nombre de Usuario" class="input-field">
+        <input type="submit" name="makeAdmin" value="Hacer Administrador" class="btn">
     </form>
 </body>
 </html>

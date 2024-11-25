@@ -1,0 +1,71 @@
+<?php
+require_once("models/SongModel.php");
+echo 'Bienvenido';
+
+echo
+'<form action="index.php" method="post">
+		    <input type= "submit" name="logout" value="Cerrar sesion" />
+	    </form>';
+
+// // if ($_SESSION['user']->getRol()==2){
+// // 	echo 
+// //         '<form action="index.php?a=add" method="post">
+// // 	    <input type= "submit" name="agregar" value="Agregar producto" />
+// //         </form>'
+// //     ;
+
+// 	echo
+//         '
+//         <form action="index.php?a=modify" method="post">
+// 	    <input type= "submit" name="modificar" value="Modificar usuario" />
+// 	    </form>
+// 	'
+//     ;
+// }
+
+echo '<form action="index.php?bu=search" method="post">
+        <input type="text" name="search" value="Busca canciones por título/autor">
+        <input type="submit" name="buscarSong" value="Buscar">
+    ';
+    if (isset($songs)) {
+        foreach ($songs as $song) {
+            echo '<div class="cancion">';
+            echo '<li>' . htmlspecialchars($song->getTitle()) . '</li>';
+            echo '<form action="asignarCancion.php" method="post">';
+            echo '<label for="playlist">Asignar a lista:</label>';
+            echo '<select name="playlist" id="playlist">';
+    
+            if (isset($lists) && !empty($lists)) {
+                foreach ($lists as $list) {
+                    echo '<option value="' . htmlspecialchars($list->getTitle()) . '">' . htmlspecialchars($list->getTitle()) . '</option>';
+                }
+            } else {
+                echo '<option value="" disabled>No hay listas disponibles</option>';
+            }
+    
+            echo '</select>';
+            echo '<input type="hidden" name="cancion_id" value="' . htmlspecialchars($song->getId()) . '">';
+            echo '<input type="submit" value="Asignar">';
+            echo '</form>';
+            echo '</div>';
+        }
+    }
+    
+
+if (!isset($lists)) {
+    echo 'No hay listas';
+} else {
+    foreach ($lists as $list) {
+        echo '<li>' . $list->getTitle() . '</li>';
+    }
+}
+
+echo
+'<form action="index.php?n=list" method="post">
+        <input type="submit" name="crearLista" value="Crear lista">
+        </form>';
+
+echo
+'<form action="index.php?nc=song" method="post">
+        <input type="submit" name="createSong" value="Introducir nueva canción">
+        </form>';

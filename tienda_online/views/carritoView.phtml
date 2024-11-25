@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito</title>
+    <link rel="stylesheet" href="/tienda_online/styles/carritoStyle.css">
 </head>
+
 <body>
     <h1>Carrito de Compras</h1>
-    
+
     <?php
-        foreach($productsCarrito as $product){
-            echo '<li>'.$product->getName().'</li>'.
-			'<form action="index.php?v=carritoFunc" method="post">
-				<input type="hidden" name="id" value="'.$product->getId().'"/>
-				<input type="hidden" name="precio" value="'.$product->getPrice().'"/>
-				<input type="submit" name="eliminar" value="eliminar del carrito">
-			</form>
-		';
-        }
-        echo '<br></br><br></br>
-            <form action="index.php" method="post">
-                <input type="submit" name="list" value="Volver a inicio"/>
-            </form>
-        ';
+    foreach ($productsCarrito as $product) {
+        echo '<li class="product-item">' . $product->getName() .
+            '<form action="index.php?v=carritoFunc" method="post" class="form-inline">
+                <input type="hidden" name="id" value="' . $product->getId() . '"/>
+                <input type="hidden" name="precio" value="' . $product->getPrice() . '"/>
+                <input type="submit" name="eliminar" value="Eliminar del carrito" class="btn-inline"/>
+            </form></li>';
+    }
 
+    echo '<br><br>
+            <form action="index.php" method="post" class="form">
+                <input type="submit" name="list" value="Volver a inicio" class="btn"/>
+            </form>';
 
-        echo '<form action="index.php?v=carritoFunc" method="post">
-                <input type="submit" name="comprar" value="Realizar pedido"/>
-            </form>
-        ';
-   
-        
+    echo '<form action="index.php?v=carritoFunc" method="post" class="form">
+                <input type="submit" name="comprar" value="Realizar pedido" class="btn"/>
+            </form>';
     ?>
-    
 </body>
+
 </html>
