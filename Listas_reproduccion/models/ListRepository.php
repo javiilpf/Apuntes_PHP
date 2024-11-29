@@ -7,7 +7,9 @@ class ListRepository
         $q = "SELECT * FROM lists where id_user='".$user->getId()."'";
         $result = $db->query($q);
         while($row = $result->fetch_assoc()){
+            
             $lists[] = new ListModel($row['id'], $row['id_user'], $row['title']);
+            
         }
         
         if (!empty($lists)){
@@ -21,6 +23,13 @@ class ListRepository
         $db->query($q);
     }
 
-    
+    public static function getTitleOfListById($idList){
+        $db=Conectar::conexion();
+        $q=("SELECT title FROM `lists` WHERE id = '$idList'");
+        $result=$db->query($q);
+        $row=$result->fetch_assoc();
+        
+        return $row['title'];
+    }
     
 }

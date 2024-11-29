@@ -1,0 +1,23 @@
+<?php
+// Asegurándote de que las clases necesarias están incluidas
+require_once(__DIR__ . '/../models/AddModel.php');
+require_once(__DIR__ . '/../models/SongModel.php');
+require_once(__DIR__ . '/../models/SongRepository.php');
+
+echo '<h1>Detalles de la Lista de Reproducción</h1>';
+
+if (!empty($songsInList)) {
+    echo '<h2>Titulo de la lista:  '.$listTitle = ListRepository::getTitleOfListById($listId).'</h2>';
+    echo '<ul>';
+    foreach ($songsInList as $song) {
+        // Obteniendo los detalles de la canción utilizando getIdSongs()
+        $songDetails = SongRepository::getSongById($song->getIdSongs());
+        echo '<li>' . htmlspecialchars($songDetails->getTitle()) . ' - ' . htmlspecialchars($songDetails->getAuthor()) .' - '.htmlspecialchars(($songDetails->getDuration())) .'</li>';
+    }
+    echo '</ul>';
+} else {
+    echo '<p>No hay canciones en esta lista de reproducción.</p>';
+}
+?>
+
+

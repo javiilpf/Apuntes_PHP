@@ -4,13 +4,13 @@ class AddModel{
 
     private $id_songs;
     private $id_list;
-    private $id_user;
+    private $id_users;
     
 
-    function __construct($id_songs, $id_list, $id_user){
+    function __construct($id_songs, $id_list, $id_users){
         $this->id_songs=$id_songs;
         $this->id_list=$id_list;
-        $this->id_user=$id_user;
+        $this->id_users=$id_users;
     }
 
     public function getIdSongs(){
@@ -20,8 +20,8 @@ class AddModel{
     public function getIdList(){
         return $this->id_list;
     }
-    public function getIdUser(){
-        return $this->id_user;
+    public function getIdUsers(){
+        return $this->id_users;
     }
 }
 ?>
