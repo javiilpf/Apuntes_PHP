@@ -7,11 +7,11 @@ require_once(__DIR__ . '/../models/AddModel.php');
 echo 'Bienvenido';
 
 echo '<form action="index.php" method="post">
-        <input type= "submit" name="logout" value="Cerrar sesion" />
+        <input type= "submit" name="logout" value="Cerrar sesión" />
       </form>';
 
 echo '<form action="index.php?bu=search" method="post">
-        <input type="text" name="search" value="Busca canciones por título/autor">
+        <input type="text" name="search" placeholder="Busca canciones por título/autor">
         <input type="submit" name="buscarSong" value="Buscar">
       </form>';
 
@@ -19,7 +19,7 @@ if (isset($songs)) {
     foreach ($songs as $song) {
         echo '<div class="cancion">';
         echo '<li>' . htmlspecialchars($song->getTitle()) . '</li>';
-        echo '<form action="index.php" method="post">';
+        echo '<form action="index.php?s=add" method="post">';
         echo '<label for="playlist">Asignar a lista:</label>';
         echo '<select name="playlist" id="playlist">';
         
@@ -50,10 +50,10 @@ if (!isset($lists)) {
             $duracion = $cancion->getDuration();
             $totalDurationList += $duracion;
         }
-        $minSec = SongRepository::convertMillisToMinutesAndSeconds($totalDurationList);
+        $minSec = SongRepository::convertMinutesAndSeconds($totalDurationList);
     
         // Crear el formulario oculto para cada lista
-        echo '<form id="form-' . $list->getId() . '" action="/listas_reproduccion/controllers/mainController.php" method="post" style="display: none;">';
+        echo '<form id="form-' . $list->getId() . '" action="index.php?w=detailList" method="post" style="display: none;">';
         echo '<input type="hidden" name="action" value="viewList">';
         echo '<input type="hidden" name="listId" value="' . $list->getId() . '">';
         echo '</form>';
@@ -77,3 +77,4 @@ function submitForm(formId) {
     document.getElementById(formId).submit();
 }
 </script>
+

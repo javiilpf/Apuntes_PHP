@@ -18,17 +18,17 @@ if (isset($_GET['c'])) {
 
 // Manejar la creación de nuevas listas
 if (isset($_POST['crearLista'])) {
-    require_once(__DIR__ . '/../views/createListView.phtml');
+    require_once('/xampp/htdocs/Listas_reproduccion/controllers/listController.php');
     exit();
 }
 
 if (isset($_POST['añadir'])) {
     require_once(__DIR__ . '/../controllers/listController.php');
+    exit();
 }
 
-// Manejar la creación de nuevas canciones
 if (isset($_POST['createSong'])) {
-    require_once(__DIR__ . '/../views/createSongView.phtml');
+    require_once('/xampp/htdocs/Listas_reproduccion/controllers/songController.php');
     exit();
 }
 
@@ -41,42 +41,35 @@ if (isset($_POST['buscarSong'])) {
     require_once(__DIR__ . '/../controllers/searchController.php');
 }
 
+// Añadir canción a la lista
+if (isset($_GET['s'])) {
+    require_once(__DIR__ . '/../controllers/' . htmlspecialchars($_GET['s']) . 'Controller.php');
+    header('Location: index.php');
+    exit;
+
+}
+if (isset($_GET['w'])) {
+    require_once(__DIR__ . '/../controllers/' . htmlspecialchars($_GET['w']) . 'Controller.php');
+    exit();
+}
+if (isset($_GET['a'])) {
+    require_once("/xampp/htdocs/Listas_reproduccion/controllers/detailListController.php");
+    exit();
+}
+
 // Mostrar el login si no está logueado
 if (!isset($_SESSION['login'])) {
     require_once __DIR__ . '/../views/loginView.phtml';
 } else {
     $lists = ListRepository::showListForUser($_SESSION['user']);
     require_once(__DIR__ . '/../views/listView.phtml');
+    
 }
-
 // Manejar el logout
 if (isset($_POST['logout'])) {
     ob_clean();
     session_destroy();
     require_once __DIR__ . '/../views/loginView.phtml';
-}
-
-// Añadir canción a la lista
-if (isset($_POST['AddSongToList'])) {
-    require_once(__DIR__ . '/../controllers/addController.php');
-}
-
-// Manejar la acción de ver lista específica utilizando POST
-if (isset($_POST['action']) && $_POST['action'] == 'viewList') {
-    if (isset($_POST['listId'])) {
-        $listId = intval($_POST['listId']); // Convertir el ID de la lista a número entero
-        // Obtener los detalles de la lista
-        $listTitle = ListRepository::getTitleOfListById($listId);
-
-        // Obtener la lista de reproducción por ID
-        $songsInList = AddRepository::GetSongsForList($listId, $_SESSION['user']->getId());
-
-        // Mostrar los detalles de la lista de reproducción
-        require_once __DIR__ . '/../views/detailListView.phtml';
-        
-    } else {
-        echo "ID de la lista no proporcionado.";
-    }
 }
 ?>
 

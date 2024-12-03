@@ -35,15 +35,14 @@ class SongRepository
         return null; // Devuelve null si no se encuentra la canción
     }
     
-    public static function convertMillisToMinutesAndSeconds($milliseconds) {
-        $totalSeconds = $milliseconds / 1000;
-        $minutes = floor($totalSeconds / 60);
-        $seconds = $totalSeconds % 60;
+    public static function convertMinutesAndSeconds($seconds) {
+        $minutes = floor($seconds / 60);
+        $resultSeconds = $seconds % 60;
     
         // Formatear los segundos para que siempre muestren dos dígitos
-        $seconds = sprintf('%02d', $seconds);
+        $resultSeconds = sprintf('%02d', $resultSeconds);
     
-        return $minutes . ":" . $seconds;
+        return $minutes . ":" . $resultSeconds;
     }
     
     

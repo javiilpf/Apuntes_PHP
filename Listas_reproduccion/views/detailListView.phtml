@@ -12,12 +12,17 @@ if (!empty($songsInList)) {
     foreach ($songsInList as $song) {
         // Obteniendo los detalles de la canción utilizando getIdSongs()
         $songDetails = SongRepository::getSongById($song->getIdSongs());
-        echo '<li>' . htmlspecialchars($songDetails->getTitle()) . ' - ' . htmlspecialchars($songDetails->getAuthor()) .' - '.htmlspecialchars(($songDetails->getDuration())) .'</li>';
+        $minSec = SongRepository::convertMinutesAndSeconds($songDetails->getDuration());
+        echo '<li>' . htmlspecialchars($songDetails->getTitle()) . ' - ' . htmlspecialchars($songDetails->getAuthor()) .' - '.$minSec .'</li>';
     }
     echo '</ul>';
+    
 } else {
     echo '<p>No hay canciones en esta lista de reproducción.</p>';
 }
+echo '<form action="index.php?a=atras">
+        <input type="submit" value="Atrás">
+    </form>'
 ?>
 
 

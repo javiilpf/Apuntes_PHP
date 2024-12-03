@@ -1,0 +1,48 @@
+<?php
+// Incluir las clases necesarias antes de iniciar la sesión
+require_once("/xampp/htdocs/proyecto_foro/models/ForoModel.php");
+require_once("/xampp/htdocs/proyecto_foro/models/ForoRepository.php");
+require_once("/xampp/htdocs/proyecto_foro/models/UserModel.php");
+require_once("/xampp/htdocs/proyecto_foro/models/UserRepository.php");
+
+// Iniciar la sesión después de incluir las clases
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$entradas = ForoRepository::getPublicForos();
+$entradasPrivPub=ForoRepository::getPublicPrivateForos();
+
+if (!isset($_SESSION['user']) || $_SESSION['login'] !== true) {
+    // Mostrar el formulario solo si el usuario no está logueado
+    echo '<form action="index.php?n=login" method="post">
+            <input type="text" name="username" placeholder="Usuario">
+            <input type="password" name="password" placeholder="Contraseña">
+            <input type="submit" name="login" value="Iniciar sesión">
+            ¿Todavía no estás registrado?
+            <input type="submit" name="registro" value="Regístrate aquí">
+          </form>';
+    foreach ($entradas as $entrada) {
+        echo '<h2>' . htmlspecialchars($entrada->getTitle()) . '</h2>';
+        echo '<p>' . htmlspecialchars($entrada->getContent()) . '</p><br>';
+    }
+} else {
+    ob_clean();
+    echo '<p>Bienvenido, ' . htmlspecialchars($_SESSION['user']->getUsername()) . '</p>';
+    
+    echo '<form action="index.php?c=logout" method="post">
+            <input type="submit" name="logout" value="Cerrar sesión">
+          </form>';
+    
+    foreach ($entradasPrivPub as $entradaPrivPub) {
+        echo '<h2>' . htmlspecialchars($entradaPrivPub->getTitle()) . '</h2>';
+        echo '<p>' . htmlspecialchars($entradaPrivPub->getContent()) . '</p><br>';
+    }
+}
+
+
+?>
+
+
+
+
